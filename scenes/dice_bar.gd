@@ -1,5 +1,7 @@
 extends HBoxContainer
 
+@onready var roll_sound: AudioStreamPlayer = $RollSound
+
 func _ready() -> void:
 	add_die(4)
 	add_die(6)
@@ -18,12 +20,19 @@ func _unhandled_input(event: InputEvent) -> void:
 		roll()
 
 func roll() -> void:
+	var money := 0
+	var control := 0
 	for c in get_children():
 		var b := c as Button
 		if (b and b.button_pressed):
-			roll_die(b)
+			money += roll_die(b)
+		elif (b and not b.button_pressed):
+			control += 1
+	prints("Scored", money)
+	Events.money_earned.emit(money)
+	Events.control_earned.emit(control)
 
-func roll_die(b: Button) -> void:
+func roll_die(b: Button) -> int:
 	var sides := b.text.to_int()
 	prints("Rolling", sides)
 	var label := Label.new()
@@ -32,5 +41,11 @@ func roll_die(b: Button) -> void:
 	label.text = str(score)
 	var tween := get_tree().create_tween()
 	tween.tween_property(label, "position", Vector2(0, -100), 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(label, "modulate", Color.TRANSPARENT, 2.0).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_callback(label.queue_free)
 	b.set_pressed_no_signal(false)
 	b.release_focus()
+
+	roll_sound.play()
+
+	return score

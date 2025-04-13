@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4dfeshs44dmj"]
+[gd_scene load_steps=7 format=3 uid="uid://d4dfeshs44dmj"]
 
+[ext_resource type="Script" uid="uid://dvvxpd3ytc64s" path="res://scenes/game.gd" id="1_lbhrr"]
+[ext_resource type="Script" uid="uid://dvamf3q45sd1w" path="res://scenes/money_label.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://cy4sclufyqtub" path="res://scenes/dice_bar.gd" id="1_uwrxv"]
+[ext_resource type="AudioStream" uid="uid://cj6ay8gup3nao" path="res://assets/sounds/dice.wav" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://dwgvsb0ye1fkt" path="res://scenes/control_label.gd" id="3_iywne"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lnu2h"]
+random_pitch = 1.3
+random_volume_offset_db = 5.0
+streams_count = 1
+stream_0/stream = ExtResource("2_yqjtg")
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -11,6 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_lbhrr")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -26,12 +37,43 @@ grow_vertical = 2
 
 [node name="StatusBar" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/StatusBar"]
+layout_mode = 2
+
+[node name="MoneyTitle" type="Label" parent="VBoxContainer/StatusBar/VBoxContainer"]
+layout_mode = 2
+text = "Money"
+
+[node name="MoneyLabel" type="Label" parent="VBoxContainer/StatusBar/VBoxContainer"]
+layout_mode = 2
+text = "$0"
+horizontal_alignment = 1
+script = ExtResource("1_lnu2h")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/StatusBar"]
+layout_mode = 2
+
+[node name="ControlTitle" type="Label" parent="VBoxContainer/StatusBar/VBoxContainer2"]
+layout_mode = 2
+text = "Control"
+
+[node name="ControlLabel" type="Label" parent="VBoxContainer/StatusBar/VBoxContainer2"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+script = ExtResource("3_iywne")
 
 [node name="CenterArea" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="DiceBar" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 script = ExtResource("1_uwrxv")
+
+[node name="RollSound" type="AudioStreamPlayer" parent="VBoxContainer/DiceBar"]
+stream = SubResource("AudioStreamRandomizer_lnu2h")
