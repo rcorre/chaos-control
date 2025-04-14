@@ -134,3 +134,5 @@ jobs:
         run: butler push ./windows $ITCHIO_USERNAME/$ITCHIO_GAME:windows
       - name: Publish Mac
         run: butler push ./mac $ITCHIO_USERNAME/$ITCHIO_GAME:mac
+      - name: Publish Web
+        run: butler push ./web $ITCHIO_USERNAME/$ITCHIO_GAME:web
