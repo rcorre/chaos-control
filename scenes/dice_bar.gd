@@ -29,9 +29,15 @@ func add_die(sides: int) -> void:
 	add_child(button)
 	button.text = str(sides)
 	button.toggle_mode = true
-	button.add_theme_font_size_override("font_size", 32)
+	button.add_theme_font_size_override("font_size", 48)
 	button.focus_mode = FOCUS_NONE
 	Events.dice_active.connect(button.set_disabled)
+
+	var idx := dice().size()
+	button.shortcut = Shortcut.new()
+	var ev := InputEventAction.new()
+	ev.action = "die%d" % idx
+	button.shortcut.events = [ev]
 
 func _unhandled_input(event: InputEvent) -> void:
 	if rolled_dice.is_empty() and event.is_action_pressed("roll"):
