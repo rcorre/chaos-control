@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="Chaos Control"
-run/main_scene="uid://d4dfeshs44dmj"
+run/main_scene="uid://mp0481s15wtf"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Events="*res://singleton/events.gd"
+Bindings="*res://bindings/Bindings.gd"
+Settings="*res://settings/Settings.gd"
 
 [debug]
 
