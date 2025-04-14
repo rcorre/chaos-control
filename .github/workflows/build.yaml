@@ -113,7 +113,7 @@ jobs:
           name: mac
           path: build/mac
 
-  export-mac:
+  publish-itch:
     name: Publish to itch.io
     needs: [export-mac, export-linux, export-windows, export-web] 
     env:
