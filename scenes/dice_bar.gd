@@ -13,6 +13,7 @@ func _ready() -> void:
 	add_die(8)
 
 	roll_confirm_button.pressed.connect(on_roll_confirm_pressed)
+	Events.add_die.connect(add_die)
 
 func dice_active() -> bool:
 	return not rolled_dice.is_empty()
@@ -33,7 +34,6 @@ func add_die(sides: int) -> void:
 	Events.dice_active.connect(button.set_disabled)
 
 func _unhandled_input(event: InputEvent) -> void:
-	prints(event)
 	if rolled_dice.is_empty() and event.is_action_pressed("roll"):
 		roll()
 	elif not rolled_dice.is_empty() and event.is_action_pressed("confirm"):

@@ -11,3 +11,6 @@ signal control_changed(total)
 # if true, dice have been rolled
 # if false, waiting to roll dice
 signal dice_active(active)
+
+signal request_die_purchase(sides, cost)
+signal add_die(sides)
