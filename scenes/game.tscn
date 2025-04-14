@@ -70,10 +70,16 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="DiceBar" type="HBoxContainer" parent="VBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 script = ExtResource("1_uwrxv")
 
 [node name="RollSound" type="AudioStreamPlayer" parent="VBoxContainer/DiceBar"]
 stream = SubResource("AudioStreamRandomizer_lnu2h")
+
+[node name="RollConfirmButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Roll (Space)"

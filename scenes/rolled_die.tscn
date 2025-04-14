@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp2fa7hxvp646"]
+
+[ext_resource type="Script" uid="uid://bg50lw5jitbvu" path="res://scenes/rolled_die.gd" id="1_46nt2"]
+
+[node name="RolledDie" type="Button"]
+script = ExtResource("1_46nt2")

@@ -112,3 +112,25 @@ jobs:
         with:
           name: mac
           path: build/mac
+
+  export-mac:
+    name: Publish to itch.io
+    needs: [export-mac, export-linux, export-windows, export-web] 
+    env:
+      ITCHIO_USERNAME: rcorre
+      ITCHIO_GAME: chaos-control  
+      BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}  
+    runs-on: ubuntu-22.04
+    container:
+      image: barichello/godot-ci:4.4
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        # with: is omitted, downloading all artifacts from the run
+        run: ls
+      - name: Publish Linux
+        run: butler push ./build/linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
+      - name: Publish Windows
+        run: butler push ./build/windows $ITCHIO_USERNAME/$ITCHIO_GAME:windows
+      - name: Publish Mac
+        run: butler push ./build/mac $ITCHIO_USERNAME/$ITCHIO_GAME:mac
