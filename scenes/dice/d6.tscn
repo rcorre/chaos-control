@@ -1,15 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://cdydydfe6rhqv"]
 
-[ext_resource type="PackedScene" uid="uid://3n0bfwg7gwn6" path="res://assets/models/dice/d6.blend" id="1_0kdkn"]
+[ext_resource type="PackedScene" uid="uid://4h01u4aynxvl" path="res://assets/models/dice/d6.glb" id="1_0kdkn"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0kdkn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubwgb"]
 shading_mode = 0
 albedo_color = Color(0.558586, 0.600779, 1, 1)
 
 [node name="d6" instance=ExtResource("1_0kdkn")]
 
 [node name="Cube" parent="." index="0"]
-material_override = SubResource("StandardMaterial3D_0kdkn")
+material_override = SubResource("StandardMaterial3D_ubwgb")
 
 [node name="Sides" type="Node3D" parent="." index="1"]
 
