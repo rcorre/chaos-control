@@ -126,7 +126,7 @@ jobs:
     steps:
       - name: Download Artifacts
         uses: actions/download-artifact@v4
-        # with: is omitted, downloading all artifacts from the run
+      - name: ls
         run: ls
       - name: Publish Linux
         run: butler push ./build/linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
