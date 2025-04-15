@@ -77,6 +77,7 @@ func roll_die(b: Button) -> void:
 	var die := ROLLED_DIE_SCENE.instantiate() as RolledDie
 	rolled_dice.push_back(die)
 	die.sides = b.text.to_int()
+	die.value = randi_range(1, die.sides)
 
 	b.add_child(die)
 	b.set_pressed_no_signal(false)
@@ -84,3 +85,4 @@ func roll_die(b: Button) -> void:
 
 	roll_sound.play()
 	Events.dice_active.emit(true)
+	die.roll()

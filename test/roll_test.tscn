@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://bd3qepkj5fkym"]
+
+[ext_resource type="Script" uid="uid://cqhulb2go6o3j" path="res://test/roll_test.gd" id="1_gh3qx"]
+[ext_resource type="PackedScene" uid="uid://bp2fa7hxvp646" path="res://scenes/rolled_die.tscn" id="2_us6dw"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8er3w"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gh3qx"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_us6dw"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mrklc"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1e5ho"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3w81x"]
+viewport_path = NodePath("SubViewport")
+
+[node name="RollTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gh3qx")
+
+[node name="D6" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Control" type="CenterContainer" parent="D6"]
+layout_mode = 2
+
+[node name="RolledDie" parent="D6/Control" instance=ExtResource("2_us6dw")]
+layout_mode = 2
+texture_normal = SubResource("ViewportTexture_8er3w")
+
+[node name="Control2" type="CenterContainer" parent="D6"]
+layout_mode = 2
+
+[node name="RolledDie2" parent="D6/Control2" instance=ExtResource("2_us6dw")]
+layout_mode = 2
+texture_normal = SubResource("ViewportTexture_gh3qx")
+
+[node name="Control3" type="CenterContainer" parent="D6"]
+layout_mode = 2
+
+[node name="RolledDie3" parent="D6/Control3" instance=ExtResource("2_us6dw")]
+layout_mode = 2
+texture_normal = SubResource("ViewportTexture_us6dw")
+
+[node name="Control4" type="CenterContainer" parent="D6"]
+layout_mode = 2
+
+[node name="RolledDie4" parent="D6/Control4" instance=ExtResource("2_us6dw")]
+layout_mode = 2
+texture_normal = SubResource("ViewportTexture_mrklc")
+
+[node name="Control5" type="CenterContainer" parent="D6"]
+layout_mode = 2
+
+[node name="RolledDie5" parent="D6/Control5" instance=ExtResource("2_us6dw")]
+layout_mode = 2
+texture_normal = SubResource("ViewportTexture_1e5ho")
+
+[node name="Control6" type="CenterContainer" parent="D6"]
+layout_mode = 2
+
+[node name="RolledDie6" parent="D6/Control6" instance=ExtResource("2_us6dw")]
+layout_mode = 2
+texture_normal = SubResource("ViewportTexture_3w81x")
