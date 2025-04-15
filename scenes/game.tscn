@@ -85,24 +85,12 @@ layout_mode = 2
 [node name="GridContainer" type="VBoxContainer" parent="VBoxContainer/CenterArea/Shop"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/CenterArea/Shop/GridContainer"]
-layout_mode = 2
-text = "4"
-script = ExtResource("4_p57ef")
-
 [node name="Button2" type="Button" parent="VBoxContainer/CenterArea/Shop/GridContainer"]
 layout_mode = 2
 text = "6"
 script = ExtResource("4_p57ef")
 sides = 6
 cost = 20
-
-[node name="Button3" type="Button" parent="VBoxContainer/CenterArea/Shop/GridContainer"]
-layout_mode = 2
-text = "8"
-script = ExtResource("4_p57ef")
-sides = 8
-cost = 30
 
 [node name="DiceBar" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

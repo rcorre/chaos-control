@@ -40,5 +40,5 @@ func _pressed() -> void:
 
 func remove() -> void:
 	var tween := get_tree().create_tween()
-	tween.tween_property(self, "modulate", Color.TRANSPARENT, 2.0).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "modulate", Color.TRANSPARENT, 1.0).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	tween.tween_callback(queue_free)

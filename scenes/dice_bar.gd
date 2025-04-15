@@ -1,5 +1,6 @@
 extends HBoxContainer
 
+const DIE_BUTTON_SCENE: PackedScene = preload("res://scenes/die_button.tscn")
 const ROLLED_DIE_SCENE: PackedScene = preload("res://scenes/rolled_die.tscn")
 
 @onready var roll_confirm_button: Button = %RollConfirmButton
@@ -8,9 +9,9 @@ const ROLLED_DIE_SCENE: PackedScene = preload("res://scenes/rolled_die.tscn")
 var rolled_dice: Array[RolledDie]
 
 func _ready() -> void:
-	add_die(4)
 	add_die(6)
-	add_die(8)
+	add_die(6)
+	add_die(6)
 
 	roll_confirm_button.pressed.connect(on_roll_confirm_pressed)
 	Events.add_die.connect(add_die)
@@ -25,13 +26,9 @@ func on_roll_confirm_pressed():
 		roll()
 
 func add_die(sides: int) -> void:
-	var button := Button.new()
+	var button := DIE_BUTTON_SCENE.instantiate() as DieButton
 	add_child(button)
-	button.text = str(sides)
-	button.toggle_mode = true
-	button.add_theme_font_size_override("font_size", 48)
-	button.focus_mode = FOCUS_NONE
-	Events.dice_active.connect(button.set_disabled)
+	button.sides = sides
 
 	var idx := dice().size()
 	button.shortcut = Shortcut.new()
@@ -45,10 +42,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif not rolled_dice.is_empty() and event.is_action_pressed("confirm"):
 		confirm()
 
-func dice() -> Array[Button]:
-	var res: Array[Button]
+func dice() -> Array[DieButton]:
+	var res: Array[DieButton]
 	for c in get_children():
-		var b := c as Button
+		var b := c as DieButton
 		if b:
 			res.push_back(b)
 	return res
@@ -73,14 +70,13 @@ func confirm() -> void:
 	rolled_dice.clear()
 	Events.dice_active.emit(false)
 
-func roll_die(b: Button) -> void:
+func roll_die(b: DieButton) -> void:
 	var die := ROLLED_DIE_SCENE.instantiate() as RolledDie
 	rolled_dice.push_back(die)
-	die.sides = b.text.to_int()
+	die.sides = b.sides
 	die.value = randi_range(1, die.sides)
 
 	b.add_child(die)
-	b.set_pressed_no_signal(false)
 	b.release_focus()
 
 	roll_sound.play()
