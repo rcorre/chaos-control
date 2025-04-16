@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4dfeshs44dmj"]
+[gd_scene load_steps=10 format=3 uid="uid://d4dfeshs44dmj"]
 
 [ext_resource type="Script" uid="uid://dvvxpd3ytc64s" path="res://scenes/game.gd" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://dvamf3q45sd1w" path="res://scenes/money_label.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://cy4sclufyqtub" path="res://scenes/dice_bar.gd" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://br1rdgqgf54br" path="res://assets/textures/wood1.jpg" id="2_gee14"]
 [ext_resource type="AudioStream" uid="uid://cj6ay8gup3nao" path="res://assets/sounds/dice.wav" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://dwgvsb0ye1fkt" path="res://scenes/control_label.gd" id="3_iywne"]
 [ext_resource type="Script" uid="uid://dn7sah7s1625v" path="res://scenes/die_purchase_button.gd" id="4_p57ef"]
@@ -25,15 +26,23 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_lbhrr")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gee14")
+stretch_mode = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = -16.0
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
 

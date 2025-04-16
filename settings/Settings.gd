@@ -178,7 +178,7 @@ var video_display := choice("video", "display", ["window", "fullscreen", "border
 var video_scale_factor := real("video", "scale", 1.0, [0.1, 1.0])
 
 var audio_device := choice("audio", "device", AudioServer.get_output_device_list())
-var audio_master_volume := real("audio", "master_volume", 50, [0, 100])
+var audio_master_volume := real("audio", "master_volume", 100, [0, 100])
 var audio_sound_volume := real("audio", "sound_volume", 100, [0, 100])
 var audio_music_volume := real("audio", "music_volume", 100, [0, 100])
 

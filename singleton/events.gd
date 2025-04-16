@@ -14,3 +14,5 @@ signal dice_active(active)
 
 signal request_die_purchase(sides, cost)
 signal add_die(sides)
+
+signal request_die_rotate(die, value)
