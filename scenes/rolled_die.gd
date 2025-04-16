@@ -46,10 +46,6 @@ func roll() -> void:
 	tween.tween_interval(1.0)
 	tween.finished.connect(add_chaos_buttons)
 
-func _pressed() -> void:
-	Events.control_earned.emit(-1)
-	value = (value + 1) % sides
-
 func remove() -> void:
 	var tween := get_tree().create_tween()
 	tween.tween_property(self, "modulate", Color.TRANSPARENT, 1.0).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
